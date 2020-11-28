@@ -18,10 +18,9 @@
     /* Specify module resolution strategy */
     "moduleResolution": "node",
     /* Base directory to resolve non-absolute module names */
-    "baseUrl": "./src",
-    /* Maps imports to locations - e.g. ~models will go to ./src/models */
+    "baseUrl": ".",
     "paths": {
-      "~/*": [ "./*" ]
+      "~*": ["./src/*"]
     },
     /* List of folders to include type definitions from */
     "typeRoots": [
