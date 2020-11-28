@@ -32,7 +32,6 @@
     /*  Emit interop between CommonJS and ES modules */
     "esModuleInterop": true,
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
+  "exclude": ["node_modules"],
 }
