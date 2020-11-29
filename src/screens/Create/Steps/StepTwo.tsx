@@ -61,7 +61,23 @@ const StepTwo = ({ setTime }: StepTwoProps): ReactElement => {
     return (
         <Card>
             <Card.Title title="Select a Time" />
-            <Card.Body body={<List handleItemClick={handleItemClick} listItems={checkedTimes} />} />
+            <Card.Body
+                body={
+                    <List>
+                        {checkedTimes.map((time) => (
+                            <List.Item
+                                key={time.text}
+                                id={time.text}
+                                isDisabled={!!time.meta}
+                                handleItemClick={handleItemClick}
+                            >
+                                <h5>{time.text}</h5>
+                                <small>{time.meta}</small>
+                            </List.Item>
+                        ))}
+                    </List>
+                }
+            />
         </Card>
     );
 };

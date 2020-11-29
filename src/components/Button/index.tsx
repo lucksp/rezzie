@@ -5,7 +5,7 @@ interface ButtonProps {
     type?: 'button' | 'submit';
     text: string;
     handleClick: (event: MouseEvent) => void;
-    isDisabled: boolean;
+    isDisabled?: boolean;
 }
 
 const Button = ({ type = 'button', text, handleClick, isDisabled }: ButtonProps): ReactElement => {

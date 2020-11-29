@@ -1,33 +1,14 @@
-import React, { MouseEvent, ReactElement } from 'react';
-import { StyledList, StyledListItem } from './StyledList.css';
+import React, { ReactElement, ReactNode } from 'react';
+import { ListItem } from './ListItem';
+import { StyledList } from './StyledList.css';
 
 interface ListProps {
-    listItems: {
-        text: string | number;
-        meta?: string | number;
-    }[];
-    handleItemClick: (e: MouseEvent<HTMLLIElement | HTMLHeadingElement>) => void;
+    children: ReactNode;
 }
 
-const List = ({ listItems, handleItemClick }: ListProps): ReactElement => {
-    return (
-        <StyledList>
-            {listItems.map((item) => {
-                const isDisabled = !!item.meta;
-                return (
-                    <StyledListItem
-                        isDisabled={isDisabled}
-                        key={item.text}
-                        data-item={item.text}
-                        onClick={!isDisabled ? handleItemClick : undefined}
-                    >
-                        <h5>{item.text}</h5>
-                        {item.meta && <small>{item.meta}</small>}
-                    </StyledListItem>
-                );
-            })}
-        </StyledList>
-    );
+const List = ({ children }: ListProps): ReactElement => {
+    return <StyledList>{children}</StyledList>;
 };
 
+List.Item = ListItem;
 export { List };

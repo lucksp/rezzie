@@ -8,7 +8,6 @@ const Home = (): ReactElement => {
     return (
         <Switch>
             <Route exact path={routes.home}>
-                <h2>List of Reservations</h2>
                 <ReservationList />
             </Route>
             <Route exact path={routes.create}>

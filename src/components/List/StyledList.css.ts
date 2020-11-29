@@ -7,7 +7,7 @@ export const StyledList = styled.ul`
 `;
 
 interface ListProps {
-    isDisabled: boolean;
+    isDisabled?: boolean;
 }
 export const StyledListItem = styled.li<ListProps>`
     cursor: ${(props) => (props.isDisabled ? 'not-allowed' : 'pointer')};

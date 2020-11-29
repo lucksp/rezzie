@@ -19,10 +19,13 @@ const StepOne = ({ setSize }: StepOneProps): ReactElement => {
             <Card.Title title="Select a Party Size" />
             <Card.Body
                 body={
-                    <List
-                        handleItemClick={handleItemClick}
-                        listItems={[{ text: 1 }, { text: 2 }, { text: 3 }, { text: 4 }, { text: 5 }]}
-                    />
+                    <List>
+                        {[1, 2, 3, 4, 5].map((item) => (
+                            <List.Item key={item} id={item} handleItemClick={handleItemClick}>
+                                {item}
+                            </List.Item>
+                        ))}
+                    </List>
                 }
             />
         </Card>
