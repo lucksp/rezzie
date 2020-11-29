@@ -24,8 +24,8 @@ const ReservationList = (): ReactElement => {
     }
     return (
         <div>
-            {Object.keys(reservationsList.reservations).map((rez) => (
-                <div key={rez}>{JSON.stringify(reservationsList.reservations[rez as keyof Reservation])}</div>
+            {Object.keys(reservationsList).map((rezTime) => (
+                <div key={rezTime}>{JSON.stringify(reservationsList[rezTime as keyof Reservation])}</div>
             ))}
         </div>
     );

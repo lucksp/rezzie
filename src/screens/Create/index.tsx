@@ -1,4 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useReservationsStateContext } from '~context/Reservations/hooks/useReservations';
 import { StepOne } from './Steps/StepOne';
 import { StepThree } from './Steps/StepThree';
 import { StepTwo } from './Steps/StepTwo';
@@ -10,10 +12,11 @@ export enum Create_Step {
 }
 
 const Create = (): ReactElement | null => {
+    const { setReservation } = useReservationsStateContext();
+    const history = useHistory();
     const [step, setStep] = useState<Create_Step>(Create_Step.SIZE);
-    const [size, setSize] = useState<number>();
-    const [time, setTime] = useState<Date>();
-    const [details, setDetails] = useState<{ name: string; notes: string }>();
+    const [size, setSize] = useState<number>(0);
+    const [time, setTime] = useState<string>('');
 
     useEffect(() => {
         if (step === Create_Step.SIZE && size) {
@@ -28,8 +31,18 @@ const Create = (): ReactElement | null => {
     }, [step, time]);
 
     const handleSave = (vistorDetails: { name: string; notes: string }) => {
-        setDetails(vistorDetails);
-        console.log('save rez');
+        setReservation((prevState) => {
+            const newState = {
+                ...prevState,
+                [time]: {
+                    size,
+                    time,
+                    ...vistorDetails,
+                },
+            };
+            return newState;
+        });
+        history.push('/');
     };
 
     if (step === Create_Step.SIZE) {

@@ -5,11 +5,12 @@ interface ButtonProps {
     type?: 'button' | 'submit';
     text: string;
     handleClick: (event: MouseEvent) => void;
+    isDisabled: boolean;
 }
 
-const Button = ({ type = 'button', text, handleClick }: ButtonProps): ReactElement => {
+const Button = ({ type = 'button', text, handleClick, isDisabled }: ButtonProps): ReactElement => {
     return (
-        <StyledButton type={type} onClick={handleClick}>
+        <StyledButton type={type} onClick={handleClick} disabled={isDisabled}>
             {text}
         </StyledButton>
     );

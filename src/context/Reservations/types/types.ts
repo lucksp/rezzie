@@ -1,13 +1,12 @@
 export interface Reservation {
     name: string;
-    time: Date;
-    count: number;
-    id: number;
+    time: string;
+    size: number;
     notes: string;
 }
 
 export interface ReservationsState {
-    [id: string]: Reservation;
+    [time: string]: Reservation;
 }
 
 export interface ReservationContextShape {

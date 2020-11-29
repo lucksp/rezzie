@@ -24,17 +24,32 @@ const StepThree = ({ handleSave }: StepThreeProps): ReactElement => {
 
     return (
         <Card>
-            <Card.Title title="Guest Details" meta={<Button text="Save" handleClick={handleClick} />} />
+            <Card.Title
+                title="Guest Details"
+                meta={<Button text="Save" handleClick={handleClick} isDisabled={!name} />}
+            />
             <Card.Body
                 body={
                     <div>
                         <div>
                             <label htmlFor="name">Name</label>
-                            <input type="text" id="name" onChange={handleNameChange} value={name} />
+                            <input
+                                type="text"
+                                id="name"
+                                onBlur={handleNameChange}
+                                onChange={handleNameChange}
+                                value={name}
+                            />
                         </div>
                         <div>
                             <label htmlFor="notes">Visit Notes</label>
-                            <input type="text" id="notes" onChange={handleNotesChange} value={notes} />
+                            <input
+                                type="text"
+                                id="notes"
+                                onBlur={handleNotesChange}
+                                onChange={handleNotesChange}
+                                value={notes}
+                            />
                         </div>
                     </div>
                 }
