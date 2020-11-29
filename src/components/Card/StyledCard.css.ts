@@ -11,6 +11,15 @@ const StyledCard = styled.div`
     align-items: center;
     justify-content: center;
     flex-flow: column nowrap;
+
+    .card-title {
+        display: flex;
+        align-items: center;
+
+        button {
+            margin-left: 16px;
+        }
+    }
 `;
 
 export { StyledCard };

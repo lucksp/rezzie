@@ -25,12 +25,10 @@ const ReservationList = (): ReactElement => {
 
     if (!Object.keys(reservationsList).length) {
         return (
-            <div>
-                Sorry, no reservations yet.
-                <div>
-                    <Button type="button" text="Create Reservation" handleClick={handleCreate} />
-                </div>
-            </div>
+            <Card>
+                <Card.Title title="Sorry, no reservations yet." />
+                <Card.Body body={<Button type="button" text="Create Reservation" handleClick={handleCreate} />} />
+            </Card>
         );
     }
 
