@@ -1,6 +1,7 @@
 import { createContext } from 'react';
-import { ReservationsState } from './types/types';
+import { ReservationContextShape } from './types/types';
 
-export const ReservationsStateContext = createContext<ReservationsState | undefined>(undefined);
-
-export const ReservationsDispatchContext = createContext(undefined);
+export const ReservationsStateContext = createContext<ReservationContextShape>({
+    reservationsList: {},
+    setReservation: () => null,
+});

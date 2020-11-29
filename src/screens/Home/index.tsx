@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { routes } from '~/routes';
+import { Create } from '~screens/Create';
 import { ReservationList } from '~screens/ReservationList';
 
 const Home = (): ReactElement => {
@@ -11,7 +12,7 @@ const Home = (): ReactElement => {
                 <ReservationList />
             </Route>
             <Route exact path={routes.create}>
-                create it{' '}
+                <Create />
             </Route>
             <Route exact path={routes.reservation()}>
                 view it

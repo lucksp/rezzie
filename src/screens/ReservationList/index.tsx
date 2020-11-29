@@ -1,31 +1,31 @@
 import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Button } from '~components/Button';
 import { useReservationsStateContext } from '~context/Reservations/hooks/useReservations';
+import { Reservation } from '~context/Reservations/types/types';
 
 const ReservationList = (): ReactElement => {
-    const { reservations } = useReservationsStateContext();
+    const { reservationsList } = useReservationsStateContext();
     const history = useHistory();
 
     const handleCreate = () => {
         history.push('/create');
     };
 
-    if (!reservations.length) {
+    if (!Object.keys(reservationsList).length) {
         return (
             <div>
                 Sorry, no reservations yet.
                 <div>
-                    <button type="button" onClick={handleCreate}>
-                        Create Reservation
-                    </button>
+                    <Button type="button" text="Create Reservation" handleClick={handleCreate} />
                 </div>
             </div>
         );
     }
     return (
         <div>
-            {reservations.map((rez) => (
-                <div key={rez.id}>{JSON.stringify(rez)}</div>
+            {Object.keys(reservationsList.reservations).map((rez) => (
+                <div key={rez}>{JSON.stringify(reservationsList.reservations[rez as keyof Reservation])}</div>
             ))}
         </div>
     );

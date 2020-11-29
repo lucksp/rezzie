@@ -1,13 +1,17 @@
-import React, { ReactElement, ReactNode, useReducer } from 'react';
+import React, { ReactElement, ReactNode, useState } from 'react';
 import { ReservationsStateContext } from './context';
-import { InitialReservationState, reservationsReducer } from './state/reservationsReducer';
+import { ReservationsState } from './types/types';
 
 interface ReservationsProviderProps {
     children: ReactNode;
 }
 const ReservationsProvider = ({ children }: ReservationsProviderProps): ReactElement => {
-    const [state] = useReducer(reservationsReducer, InitialReservationState);
-    return <ReservationsStateContext.Provider value={state}>{children}</ReservationsStateContext.Provider>;
+    const [reservations, setReservation] = useState<ReservationsState>({});
+    return (
+        <ReservationsStateContext.Provider value={{ reservationsList: { ...reservations }, setReservation }}>
+            {children}
+        </ReservationsStateContext.Provider>
+    );
 };
 
 export { ReservationsProvider };

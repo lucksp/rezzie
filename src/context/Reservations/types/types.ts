@@ -1,10 +1,16 @@
-interface Reservation {
+export interface Reservation {
     name: string;
-    time: number;
+    time: Date;
     count: number;
     id: number;
+    notes: string;
 }
 
 export interface ReservationsState {
-    reservations: Reservation[];
+    [id: string]: Reservation;
+}
+
+export interface ReservationContextShape {
+    reservationsList: ReservationsState;
+    setReservation: React.Dispatch<React.SetStateAction<ReservationsState>>;
 }
